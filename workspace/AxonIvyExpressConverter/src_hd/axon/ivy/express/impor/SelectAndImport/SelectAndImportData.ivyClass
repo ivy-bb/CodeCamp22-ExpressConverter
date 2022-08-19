@@ -1,0 +1,4 @@
+SelectAndImportData #class
+axon.ivy.express.impor.SelectAndImport #namespace
+jsonFile File #field
+jsonFile PERSISTENT #fieldModifier

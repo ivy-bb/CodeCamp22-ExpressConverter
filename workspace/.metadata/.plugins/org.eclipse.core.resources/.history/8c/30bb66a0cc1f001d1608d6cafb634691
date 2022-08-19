@@ -1,0 +1,4 @@
+ch.ivyteam.ivy.designer.preferences.DataClassPreferencePage\:DEFAULT_DATA_CLASS=axon.ivy.expressimport.test.Data
+ch.ivyteam.ivy.designer.preferences.DataClassPreferencePage\:DEFAULT_NAMESPACE=axon.ivy.expressimport.test
+ch.ivyteam.ivy.project.preferences\:PROJECT_VERSION=94004
+eclipse.preferences.version=1

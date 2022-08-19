@@ -1,0 +1,8 @@
+CheckData #class
+axon.ivy.express.export.Check #namespace
+wfuser java.lang.String #field
+wfuser PERSISTENT #fieldModifier
+Estimated_Delivery_ java.lang.String #field
+Estimated_Delivery_ PERSISTENT #fieldModifier
+Footnote_ java.lang.String #field
+Footnote_ PERSISTENT #fieldModifier

@@ -1,0 +1,26 @@
+{
+  "format" : "9.4.19",
+  "id" : "180500E3683FEF66",
+  "data" : "asdf.Data",
+  "kind" : "WEB_SERVICE",
+  "wsTypeName" : "asdf.myService",
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "WebserviceStart",
+      "name" : "call()",
+      "config" : {
+        "callSignature" : "call"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 64 },
+        "labelOffset" : { "x" : -13, "y" : 17 }
+      },
+      "connect" : { "id" : "f2", "to" : "f1" }
+    }, {
+      "id" : "f1",
+      "type" : "WebserviceEnd",
+      "visual" : {
+        "at" : { "x" : 352, "y" : 64 }
+      }
+    } ]
+}

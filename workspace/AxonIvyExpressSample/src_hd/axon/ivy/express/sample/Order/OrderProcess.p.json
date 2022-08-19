@@ -1,0 +1,66 @@
+{
+  "format" : "9.4.19",
+  "id" : "17F7977B176B3341",
+  "data" : "axon.ivy.express.sample.Order.OrderData",
+  "kind" : "HTML_DIALOG",
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "HtmlDialogStart",
+      "name" : "start",
+      "config" : {
+        "callSignature" : "start",
+        "result" : {
+          "params" : [
+            { "name" : "dataOut", "type" : "axon.ivy.express.sample.Order.OrderData" }
+          ],
+          "map" : {
+            "result.dataOut.After_Shave_Balm" : "in.After_Shave_Balm",
+            "result.dataOut.Delivery_Address" : "in.Delivery_Address",
+            "result.dataOut.Lip_Gloss" : "in.Lip_Gloss",
+            "result.dataOut.Some_remarks" : "\"done\""
+          }
+        },
+        "input" : {
+          "params" : [
+            { "name" : "data", "type" : "axon.ivy.express.sample.Order.OrderData" }
+          ],
+          "map" : {
+            "out.After_Shave_Balm" : "param.data.After_Shave_Balm",
+            "out.Delivery_Address" : "param.data.Delivery_Address",
+            "out.Lip_Gloss" : "param.data.Lip_Gloss",
+            "out.Some_remarks" : "param.data.Some_remarks"
+          }
+        },
+        "guid" : "17F6513AE7E23EF2"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 64 },
+        "labelOffset" : { "x" : -10, "y" : 23 }
+      },
+      "connect" : { "id" : "f2", "to" : "f1" }
+    }, {
+      "id" : "f1",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 224, "y" : 64 }
+      }
+    }, {
+      "id" : "f4",
+      "type" : "HtmlDialogExit",
+      "visual" : {
+        "at" : { "x" : 224, "y" : 160 }
+      }
+    }, {
+      "id" : "f3",
+      "type" : "HtmlDialogEventStart",
+      "name" : "close",
+      "config" : {
+        "guid" : "17FC174762F8A186"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 160 },
+        "labelOffset" : { "x" : -15, "y" : 15 }
+      },
+      "connect" : { "id" : "f5", "to" : "f4" }
+    } ]
+}

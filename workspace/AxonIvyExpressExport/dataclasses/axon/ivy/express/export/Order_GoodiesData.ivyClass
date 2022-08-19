@@ -1,0 +1,8 @@
+Order_GoodiesData #class
+axon.ivy.express.export #namespace
+order axon.ivy.express.export.Order.OrderData #field
+order PERSISTENT #fieldModifier
+check axon.ivy.express.export.Check.CheckData #field
+check PERSISTENT #fieldModifier
+check2 axon.ivy.express.export.Check.CheckData #field
+check2 PERSISTENT #fieldModifier

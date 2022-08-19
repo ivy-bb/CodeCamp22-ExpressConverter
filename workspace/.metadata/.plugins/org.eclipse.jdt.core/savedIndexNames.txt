@@ -1,0 +1,14 @@
+INDEX VERSION 1.131+C:\XIVY\CodeCamp22-ExpressConverter\workspace\.metadata\.plugins\org.eclipse.jdt.core
+298724682.index
+1269627254.index
+1376856313.index
+1614281540.index
+3907419745.index
+2023838203.index
+1865797976.index
+3408277932.index
+805130714.index
+3538297759.index
+1940455301.index
+58158627.index
+833515856.index

@@ -1,0 +1,98 @@
+{
+  "format" : "9.4.19",
+  "id" : "17C36BBF58E53CD7",
+  "data" : "axon.ivy.express.impor.SelectAndImport.SelectAndImportData",
+  "kind" : "HTML_DIALOG",
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "HtmlDialogStart",
+      "name" : "start()",
+      "config" : {
+        "callSignature" : "start",
+        "guid" : "17C36BBF5981870E"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 64 },
+        "labelOffset" : { "x" : -16, "y" : 15 }
+      },
+      "connect" : { "id" : "f2", "to" : "f1" }
+    }, {
+      "id" : "f1",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 224, "y" : 64 }
+      }
+    }, {
+      "id" : "f3",
+      "type" : "HtmlDialogEventStart",
+      "name" : "close",
+      "config" : {
+        "guid" : "17C36BBF5A2D00FF"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 160 },
+        "labelOffset" : { "x" : -15, "y" : 15 }
+      },
+      "connect" : { "id" : "f14", "to" : "f13" }
+    }, {
+      "id" : "f4",
+      "type" : "HtmlDialogExit",
+      "visual" : {
+        "at" : { "x" : 448, "y" : 160 }
+      }
+    }, {
+      "id" : "f6",
+      "type" : "Script",
+      "name" : "import json",
+      "config" : {
+        "output" : {
+          "code" : [
+            "import ch.ivyteam.ivy.scripting.exceptions.IvyScriptException;",
+            "import ch.ivyteam.ivy.ExpressWorkflowImporter;",
+            "",
+            "ExpressWorkflowImporter.importJson(in.jsonFile.read());"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 320, "y" : 160 },
+        "size" : { "width" : 112, "height" : 44 }
+      },
+      "connect" : { "id" : "f5", "to" : "f4" }
+    }, {
+      "id" : "f9",
+      "type" : "Script",
+      "name" : "ERROR MSG",
+      "config" : {
+        "output" : {
+          "code" : [
+            "import javax.faces.application.FacesMessage;",
+            "import javax.faces.context.FacesContext;",
+            "FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(",
+            "                FacesMessage.SEVERITY_ERROR, \"Import failed\", null));"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 440, "y" : 256 },
+        "size" : { "width" : 112, "height" : 44 }
+      },
+      "connect" : { "id" : "f12", "to" : "f11" }
+    }, {
+      "id" : "f11",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 544, "y" : 256 }
+      }
+    }, {
+      "id" : "f13",
+      "type" : "Alternative",
+      "visual" : {
+        "at" : { "x" : 192, "y" : 160 }
+      },
+      "connect" : [
+        { "id" : "f16", "to" : "f9", "via" : [ { "x" : 192, "y" : 256 } ], "condition" : "!in.jsonFile.getName().endsWith(\".json\")" },
+        { "id" : "f15", "to" : "f6" }
+      ]
+    } ]
+}

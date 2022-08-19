@@ -1,0 +1,6 @@
+Get_your_Goodies_Data #class
+axon.ivy.express.sample #namespace
+give_your_order axon.ivy.express.sample.Order.OrderData #field
+give_your_order PERSISTENT #fieldModifier
+check_goods_on_stock axon.ivy.express.sample.Check.CheckData #field
+check_goods_on_stock PERSISTENT #fieldModifier

@@ -1,0 +1,63 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:ic="http://ivyteam.ch/jsf/component"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+<h:body>
+	<ui:composition template="/layouts/frame-9.xhtml">
+		<ui:define name="title">sampledlg</ui:define>
+		<ui:define name="content">
+			<style>
+			body .finished-fieldset {
+				border:0px; 
+				padding:0px;
+			}
+			</style>
+			<script type="text/javascript">
+				window.processSteps = "#{ivy.case.customFields().stringField("steps").getOrDefault("A,B,C")}";
+				window.currentProcessStep = #{data.currrentStep};
+			</script>
+			<h3>#{ivy.task.getName()}</h3>
+
+			<h:form id="form">
+				<h4>Process Steps</h4>
+				<p:fieldset styleClass="finished-fieldset"
+					toggleable="true" rendered="#{data.currrentStep gt 0}"
+					collapsed="true" legend="Order">
+					<h4>Applicant: Developer</h4>
+					<ic:axon.ivy.express.sample.Order
+						data="#{data.get_your_goodies.give_your_order}"></ic:axon.ivy.express.sample.Order>
+				</p:fieldset>			
+				<p:fieldset styleClass="finished-fieldset"
+					toggleable="true" rendered="#{data.currrentStep gt 1}"
+					collapsed="true" legend="Check">
+					<h4>Applicant: Developer</h4>
+					<ic:axon.ivy.express.sample.Check
+						data="#{data.get_your_goodies.check_goods_on_stock}"></ic:axon.ivy.express.sample.Check>
+				</p:fieldset>	
+				<br />
+				<p>#{ivy.task.getDescription()}</p>
+				<p:messages />
+				<p:panel rendered="#{data.currrentStep == 0}">
+					<ic:axon.ivy.express.sample.Order
+						data="#{data.get_your_goodies.give_your_order}" ></ic:axon.ivy.express.sample.Order>
+				</p:panel>
+				<p:panel rendered="#{data.currrentStep == 1}">
+					<ic:axon.ivy.express.sample.Check 
+						data="#{data.get_your_goodies.check_goods_on_stock}"></ic:axon.ivy.express.sample.Check>
+				</p:panel>
+				<div class="command-btns">
+					<p:commandLink id="cancel"
+						actionListener="#{ivyWorkflowView.cancel()}" value="Cancel" />
+					<p:commandButton id="proceed" actionListener="#{logic.close}"
+						value="Proceed" update="form" icon="ui-icon-check" />
+				</div>
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>

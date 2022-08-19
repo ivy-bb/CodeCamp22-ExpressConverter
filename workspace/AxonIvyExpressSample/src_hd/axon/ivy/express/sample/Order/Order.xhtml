@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+	xmlns:ic="http://ivyteam.ch/jsf/component"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+<cc:interface componentType="IvyComponent">
+</cc:interface>
+<cc:implementation>
+		<p:panelGrid columns="1" layout="grid" styleClass="ui-panelgrid-blank">
+			<p:panel style="border:0px;">
+				<p:outputLabel value='Delivery Address' />
+				<p:inputText value='#{data.Delivery_Address}' />
+			</p:panel>
+		</p:panelGrid>
+		<p:panelGrid columns="2" layout="grid" styleClass="ui-panelgrid-blank"
+			columnClasses="ui-g-12 ui-md-6 ui-lg-6, ui-g-12 ui-md-6 ui-lg-6, ui-g-12 ui-md-6 ui-lg-6, ui-g-12 ui-md-6 ui-lg-6">
+			<p:panel style="border:0px;">
+				<p:outputLabel value='Lip Gloss' />
+				<p:selectManyCheckbox value='#{data.Lip_Gloss}' layout='grid'
+					columns='1'>
+					<f:selectItem itemLabel='color 1' itemValue='color 1' />
+					<f:selectItem itemLabel='color 2' itemValue='color 2' />
+					<f:selectItem itemLabel='color 3' itemValue='color 3' />
+				</p:selectManyCheckbox>
+			</p:panel>
+			<p:panel style="border:0px;">
+				<p:outputLabel value='After Shave Balm' />
+				<p:selectOneRadio value='#{data.After_Shave_Balm}' layout='grid'
+					columns='1'>
+					<f:selectItem itemLabel='50ml' itemValue='50ml' />
+					<f:selectItem itemLabel='100ml' itemValue='100ml' />
+				</p:selectOneRadio>
+			</p:panel>
+		</p:panelGrid>
+		<p:panelGrid columns="1" layout="grid" styleClass="ui-panelgrid-blank">
+			<p:panel style="border:0px;">
+				<p:outputLabel value='Some remarks' />
+				<p:inputTextarea value='#{data.Some_remarks}' />
+
+			</p:panel>
+		</p:panelGrid>
+		<br />
+</cc:implementation>
+</html>
