@@ -1,0 +1,245 @@
+{
+  "format" : "9.4.19",
+  "id" : "182D219ABFD106A6",
+  "data" : "axon.ivy.express.export.Order_GoodiesData",
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "RequestStart",
+      "name" : "startOrder Goodies.ivp",
+      "config" : {
+        "callSignature" : "start",
+        "case" : {
+          "name" : "Order Goodies",
+          "customFields" : [
+            { "name" : "embedInFrame", "type" : "String", "value" : "\"True\"" },
+            { "name" : "steps", "type" : "String", "value" : "\"Order,Check,Final Review\"" }
+          ]
+        },
+        "roleExceptionId" : ">>",
+        "outLink" : "start_Order Goodies.ivp",
+        "wfuser" : "1",
+        "startName" : "Order Goodies"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 128 },
+        "description" : "Order Goodies"
+      },
+      "connect" : { "id" : "f2", "to" : "f1" }
+    }, {
+      "id" : "f1",
+      "type" : "UserTask",
+      "name" : "Order",
+      "config" : {
+        "dialogId" : "axon.ivy.express.export.TaskDialog",
+        "startMethod" : "start(axon.ivy.express.export.Order_GoodiesData)",
+        "output" : {
+          "map" : {
+            "out" : "result.data"
+          }
+        },
+        "task" : {
+          "name" : "Order",
+          "description" : "Select your goods",
+          "responsible" : {
+            "roleFromAttribute" : "\"Everybody\""
+          },
+          "skipTasklist" : true,
+          "expiry" : {
+            "timeout" : "new Duration(0,0,1,0,0,0)"
+          },
+          "customFields" : [
+            { "name" : "parallelindex", "type" : "Number", "value" : "0" },
+            { "name" : "stepindex", "type" : "Number", "value" : "0" }
+          ]
+        },
+        "call" : {
+          "params" : [
+            { "name" : "data", "type" : "axon.ivy.express.export.Order_GoodiesData" }
+          ],
+          "map" : {
+            "param.data" : "in"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 224, "y" : 128 }
+      },
+      "connect" : { "id" : "f4", "to" : "f3", "var" : "in1" }
+    }, {
+      "id" : "f3",
+      "type" : "TaskSwitchGateway",
+      "name" : "split",
+      "config" : {
+        "outLinks" : [ "TaskA.ivp", "TaskB.ivp" ],
+        "tasks" : {
+          "TaskA" : {
+            "name" : "SYSTEM ch.ivyteam.ivy.process.model.diagram.value.Label@52a0f7d1",
+            "responsible" : {
+              "role" : "SYSTEM"
+            }
+          },
+          "TaskB" : {
+            "name" : "SYSTEM ch.ivyteam.ivy.process.model.diagram.value.Label@52a0f7d1",
+            "responsible" : {
+              "role" : "SYSTEM"
+            }
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 352, "y" : 128 }
+      },
+      "connect" : [
+        { "id" : "f6", "to" : "f5", "condition" : "ivp==\"TaskA.ivp\"" },
+        { "id" : "f10", "to" : "f9", "condition" : "ivp==\"TaskB.ivp\"" }
+      ]
+    }, {
+      "id" : "f5",
+      "type" : "UserTask",
+      "name" : "Check",
+      "config" : {
+        "dialogId" : "axon.ivy.express.export.TaskDialog",
+        "startMethod" : "start(axon.ivy.express.export.Order_GoodiesData)",
+        "output" : {
+          "map" : {
+            "out" : "result.data"
+          }
+        },
+        "task" : {
+          "name" : "Check",
+          "description" : "Check and approve. Set delivery date.",
+          "responsible" : {
+            "roleFromAttribute" : "\"#demo\""
+          },
+          "expiry" : {
+            "timeout" : "new Duration(0,0,1,0,0,0)"
+          },
+          "customFields" : [
+            { "name" : "parallelindex", "type" : "Number", "value" : "0" },
+            { "name" : "stepindex", "type" : "Number", "value" : "1" }
+          ]
+        },
+        "call" : {
+          "params" : [
+            { "name" : "data", "type" : "axon.ivy.express.export.Order_GoodiesData" }
+          ],
+          "map" : {
+            "param.data" : "in"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 480, "y" : 80 }
+      },
+      "connect" : { "id" : "f8", "to" : "f7", "var" : "in1" }
+    }, {
+      "id" : "f7",
+      "type" : "TaskSwitchGateway",
+      "name" : "join",
+      "config" : {
+        "outLinks" : [ "TaskA.ivp" ],
+        "tasks" : {
+          "TaskA" : {
+            "name" : "SYSTEM ch.ivyteam.ivy.process.model.diagram.value.Label@3041e05",
+            "responsible" : {
+              "role" : "SYSTEM"
+            }
+          }
+        },
+        "output" : {
+          "map" : {
+            "out" : "in1",
+            "out.order" : "in1.order",
+            "out.check" : "in1.check",
+            "out.check2" : "in2.check2"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 608, "y" : 128 }
+      },
+      "connect" : [
+        { "id" : "f13", "to" : "f12", "condition" : "ivp==\"TaskA.ivp\"" }
+      ]
+    }, {
+      "id" : "f9",
+      "type" : "UserTask",
+      "name" : "Check",
+      "config" : {
+        "dialogId" : "axon.ivy.express.export.TaskDialog",
+        "startMethod" : "start(axon.ivy.express.export.Order_GoodiesData)",
+        "output" : {
+          "map" : {
+            "out" : "result.data"
+          }
+        },
+        "task" : {
+          "name" : "Check",
+          "description" : "Check and approve. Set delivery date.",
+          "responsible" : {
+            "roleFromAttribute" : "\"#admin\""
+          },
+          "expiry" : {
+            "timeout" : "new Duration(0,0,1,0,0,0)"
+          },
+          "customFields" : [
+            { "name" : "parallelindex", "type" : "Number", "value" : "1" },
+            { "name" : "stepindex", "type" : "Number", "value" : "1" }
+          ]
+        },
+        "call" : {
+          "params" : [
+            { "name" : "data", "type" : "axon.ivy.express.export.Order_GoodiesData" }
+          ],
+          "map" : {
+            "param.data" : "in"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 480, "y" : 176 }
+      },
+      "connect" : { "id" : "f11", "to" : "f7", "var" : "in2" }
+    }, {
+      "id" : "f12",
+      "type" : "UserTask",
+      "name" : "Final Review",
+      "config" : {
+        "dialogId" : "axon.ivy.express.export.TaskDialog",
+        "startMethod" : "start(axon.ivy.express.export.Order_GoodiesData)",
+        "output" : {
+          "map" : {
+            "out" : "result.data"
+          }
+        },
+        "task" : {
+          "name" : "Order Goodies: Final Review",
+          "responsible" : {
+            "role" : "CREATOR"
+          },
+          "customFields" : [
+            { "name" : "stepindex", "type" : "Number", "value" : "2" }
+          ]
+        },
+        "call" : {
+          "params" : [
+            { "name" : "data", "type" : "axon.ivy.express.export.Order_GoodiesData" }
+          ],
+          "map" : {
+            "param.data" : "in"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 736, "y" : 128 },
+        "description" : "Exported AxonIvyExpress Workflow Order Goodies"
+      },
+      "connect" : { "id" : "f15", "to" : "f14" }
+    }, {
+      "id" : "f14",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 864, "y" : 128 }
+      }
+    } ]
+}

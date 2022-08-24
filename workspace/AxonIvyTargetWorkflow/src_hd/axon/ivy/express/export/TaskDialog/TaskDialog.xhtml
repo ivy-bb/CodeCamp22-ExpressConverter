@@ -1,0 +1,69 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:ic="http://ivyteam.ch/jsf/component"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+<h:body>
+	<ui:composition template="/layouts/frame-10.xhtml">
+		<ui:define name="title">Order_Goodies</ui:define>
+		<ui:define name="content">
+			<style>
+body .finished-fieldset {
+}
+</style>
+			<script type="text/javascript">
+				window.processSteps = "#{ivy.case.customFields().stringField("steps").getOrDefault("")}";
+				window.currentProcessStep = #{data.currentStep};
+				window.processChainShape = "LINE";
+			</script>
+
+			<p>
+				<p:outputLabel value="Finished Process Steps"
+					rendered="#{data.currentStep gt 0}" style="font-weight: bold"/>
+			</p>
+				<p:fieldset styleClass='finished-fieldset' toggleable='true' rendered='#{data.currentStep gt 0}' collapsed='false' legend='Order'>
+<b>Applikant:</b> #{data.processData.order.wfuser}<hr/>
+<b>Form Details:</b><ic:axon.ivy.express.export.Order data="#{data.processData.order}" editable="false"/>
+</p:fieldset>
+<p:fieldset styleClass='finished-fieldset' toggleable='true' rendered='#{data.currentStep gt 1}' collapsed='true' legend='Check'>
+<b>Applikant:</b> #{data.processData.check.wfuser}<hr/>
+<b>Form Details:</b><ic:axon.ivy.express.export.Check data="#{data.processData.check}" editable="false"/>
+</p:fieldset>
+<p:fieldset styleClass='finished-fieldset' toggleable='true' rendered='#{data.currentStep gt 1}' collapsed='true' legend='Check'>
+<p:panel styleClass='card'><b>Applikant</b><br/>Full name: #{data.processData.check2.wfuser}<hr/>
+<b>Form Details:</b><ic:axon.ivy.express.export.Check data="#{data.processData.check2}" editable="false"/>
+</p:panel></p:fieldset>
+
+				
+			<br/>
+
+			<h:form id="form">
+				<p:messages />
+						
+				<p:fieldset legend="Form" toggleable="true" collapsed="false" rendered="#{data.currentStep == 0 and data.parallelIndex == 0}">
+<b>Select your goods</b><hr/>
+<ic:axon.ivy.express.export.Order data="#{data.processData.order}" editable="true"/>
+</p:fieldset>
+<p:fieldset legend="Form" toggleable="true" collapsed="false" rendered="#{data.currentStep == 1 and data.parallelIndex == 0}">
+<b>Check and approve. Set delivery date.</b><hr/>
+<ic:axon.ivy.express.export.Check data="#{data.processData.check}" editable="true"/>
+</p:fieldset>
+<p:fieldset legend="Form" toggleable="true" collapsed="false" rendered="#{data.currentStep == 1 and data.parallelIndex == 1}">
+<b>Check and approve. Set delivery date.</b><hr/>
+<ic:axon.ivy.express.export.Check data="#{data.processData.check2}" editable="true"/>
+</p:fieldset>
+
+				
+				<div class="command-btns">
+					<p:commandLink id="cancel"
+						actionListener="#{ivyWorkflowView.cancel()}" value="Cancel" />
+					<p:commandButton id="proceed" actionListener="#{logic.close}"
+						value="Ok" update="form" icon="ui-icon-check" />
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

@@ -48,9 +48,9 @@
         "output" : {
           "code" : [
             "import ch.ivyteam.ivy.scripting.exceptions.IvyScriptException;",
-            "import ch.ivyteam.ivy.ExpressWorkflowImporter;",
+            "import ch.ivyteam.ivy.ExpressWorkflowConverter;",
             "",
-            "ExpressWorkflowImporter.importJson(in.jsonFile.read());"
+            "ExpressWorkflowConverter.importJson(in.jsonFile.read());"
           ]
         }
       },

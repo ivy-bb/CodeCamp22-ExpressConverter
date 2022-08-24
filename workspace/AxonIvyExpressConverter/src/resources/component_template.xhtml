@@ -7,11 +7,16 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:pe="http://primefaces.org/ui/extensions">
 <cc:interface componentType="IvyComponent">
+	<cc:attribute name="editable"></cc:attribute>
 </cc:interface>
 <cc:implementation>
 	<style>
-		body .panel_blank {
-			border:0px; 
+		body .panel_blank .ui-panel-content {
+			border: 0px;
+			padding: 0px;
+		}
+		.container td {
+			padding: 0px;
 		}
 	</style>
 	<p:panelGrid columns="1" layout="grid" styleClass="ui-panelgrid-blank">

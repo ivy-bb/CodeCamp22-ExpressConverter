@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+  xmlns:ic="http://ivyteam.ch/jsf/component" xmlns:p="http://primefaces.org/ui"
+  xmlns:pe="http://primefaces.org/ui/extensions">
+<h:body>
+  <ui:composition template="/layouts/HtmlDemo.xhtml">
+    <ui:param name="centerHeader" value="Advanced File Upload Demo" />
+    <ui:define name="breadcrumb">Input/Advanced File Upload Demo</ui:define>
+
+    <ui:define name="content">
+      <h:panelGroup layout="block">
+        <p>This demo explains how images from the CMS (Content Management System) can be uploaded and displayed.</p>
+        <h:form id="pictureGalleryForm" enctype="multipart/form-data">
+          <p:messages id="messages" />
+          <p:galleria id="pictureGallery" value="#{data.images}" var="imagename" style="max-width: 500px" 
+            showCaption="true" autoPlay="false" showItemNavigators="true" numVisible="5">
+            <p:graphicImage library="ivy-cms" name="ch.ivyteam.htmldialog.demo/fileUploadImages/#{imagename}"
+              alt="Image Description for #{imagename}" style="width: 100%;" />
+            <f:facet name="caption">
+              <h4 class="p-mb-2">#{imagename}</h4>
+              <p>"Image Description for #{imagename}</p>
+            </f:facet>
+            <f:facet name="thumbnail">
+              <p:graphicImage library="ivy-cms" name="ch.ivyteam.htmldialog.demo/fileUploadImages/#{imagename}" 
+                alt="Image Description for #{imagename}" style="width: 100%;" />
+            </f:facet>
+          </p:galleria>
+          <br />
+          <br />
+          <h:outputText value="Add an image to the gallery. Allowed image types are gif, jpg or png." />
+          <br />
+          <p:fileUpload id="fileUpload" listener="#{logic.uploadFile}" allowTypes="/(\.|\/)(gif|jpe?g|png)$/i"
+            auto="true" mode="advanced" label="Add Image" update="pictureGalleryForm" />
+          <br />
+        </h:form>
+      </h:panelGroup>
+    </ui:define>
+
+  </ui:composition>
+</h:body>
+
+</html>

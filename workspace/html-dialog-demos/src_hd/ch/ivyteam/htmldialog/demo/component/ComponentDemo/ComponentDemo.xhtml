@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+  xmlns:ic="http://ivyteam.ch/jsf/component" xmlns:p="http://primefaces.org/ui">
+<h:body>
+
+  <ui:composition template="/layouts/HtmlDemo.xhtml">
+    <ui:param name="centerHeader" value="Component Demo" />
+    <ui:define name="breadcrumb">Component/Component Demo</ui:define>
+
+    <ui:define name="content">
+      <h:form id="demoForm">
+        <h:panelGroup layout="block" id="panel">
+          <p>This demo explains how Html Dialog components can be reused.</p>
+          <!--
+          Use the 'http://ivyteam.ch/jsf/component' namespace which is included by default with the 'ic' prefix to insert an ivy component.
+          As tag name use the id of the JSF Html Dialog.
+          If needed you can specify the start method with the startMethod parameter.
+          Input and output parameters of the start method are mapped by name.
+           -->
+          <ic:ch.ivyteam.htmldialog.demo.component.PersonComponent person="#{data.person}" id="personComponent" />
+<p:commandButton value="proceed" actionListener="#{logic.close}"></p:commandButton>
+          <br />
+          <p:panelGrid columns="2" layout="flex" id="result" style="max-width: 500px;">
+            <h:outputText value="First Name" style="font-weight:bold" />
+            <h:outputText value="#{data.person.firstname}" />
+            <h:outputText value="Last Name" style="font-weight:bold" />
+            <h:outputText value="#{data.person.name}" />
+
+            <h:outputText value="Delivery Address" style="font-weight:bold" />
+            <p:panelGrid columns="2" layout="flex">
+              <h:outputText value="Street" style="font-style:italic" />
+              <h:outputText value="#{data.person.deliveryAddress.street}" />
+              <h:outputText value="Country" style="font-style:italic" />
+              <h:outputText value="#{data.person.deliveryAddress.country}" />
+            </p:panelGrid>
+
+            <h:outputText value="Billing Address" style="font-weight:bold" />
+            <p:panelGrid columns="2" layout="flex">
+              <h:outputText value="Street" style="font-style:italic" />
+              <h:outputText value="#{data.person.billingAddress.street}" />
+              <h:outputText value="Country" style="font-style:italic" />
+              <h:outputText value="#{data.person.billingAddress.country}" />
+            </p:panelGrid>
+          </p:panelGrid>
+        </h:panelGroup>
+      </h:form>
+    </ui:define>
+  </ui:composition>
+</h:body>
+
+</html>

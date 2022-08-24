@@ -1,6 +1,0 @@
-ProcessDlgData #class
-axon.ivy.express.sample.ProcessDlg #namespace
-get_your_goodies axon.ivy.express.sample.Get_your_Goodies_Data #field
-get_your_goodies PERSISTENT #fieldModifier
-currrentStep Integer #field
-currrentStep PERSISTENT #fieldModifier

@@ -1,6 +1,0 @@
-CheckData #class
-axon.ivy.express.sample.Check #namespace
-Estimated_Delivery_ java.lang.String #field
-Estimated_Delivery_ PERSISTENT #fieldModifier
-Footnote_ java.lang.String #field
-Footnote_ PERSISTENT #fieldModifier

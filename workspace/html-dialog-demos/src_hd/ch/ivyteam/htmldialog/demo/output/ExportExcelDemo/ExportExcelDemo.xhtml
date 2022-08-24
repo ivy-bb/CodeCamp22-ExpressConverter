@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+  xmlns:p="http://primefaces.org/ui">
+<h:body>
+  <ui:composition template="/layouts/HtmlDemo.xhtml">
+    <ui:param name="centerHeader" value="Export Excel Demo" />
+    <ui:define name="breadcrumb">Output/Export Excel Demo</ui:define>
+
+    <ui:define name="content">
+
+      <h:form id="form">
+        <h:panelGroup id="persons" layout="block">
+          <p>This demo shows the export feature of Primeface's data table.</p>
+
+          <p:dataTable var="person" value="#{data.recordset}" id="personTable">
+            <p:column headerText="Name">
+              <p:outputLabel value="#{person['Name']}" />
+            </p:column>
+
+            <p:column headerText="First Name">
+              <p:outputLabel value="#{person['Firstname']}" />
+            </p:column>
+          </p:dataTable>
+
+          <br />
+
+          <h:panelGrid>
+            <p:commandButton id="exportBtn" value="Export" ajax="false" icon="fa-regular fa-file-excel">
+              <p:dataExporter type="xls" target="personTable" fileName="Persons" />
+            </p:commandButton>
+          </h:panelGrid>
+
+        </h:panelGroup>
+      </h:form>
+
+    </ui:define>
+  </ui:composition>
+</h:body>
+
+</html>

@@ -1,0 +1,10 @@
+Data #class
+htmlDialogDemos #namespace
+a String #field
+a PERSISTENT #fieldModifier
+b String #field
+b PERSISTENT #fieldModifier
+c String #field
+c PERSISTENT #fieldModifier
+p ch.ivyteam.htmldialog.demo.Person #field
+p PERSISTENT #fieldModifier

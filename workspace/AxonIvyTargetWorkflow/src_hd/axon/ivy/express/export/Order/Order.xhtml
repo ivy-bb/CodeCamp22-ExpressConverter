@@ -1,0 +1,75 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+	xmlns:ic="http://ivyteam.ch/jsf/component"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+<cc:interface componentType="IvyComponent">
+	<cc:attribute name="editable"></cc:attribute>
+</cc:interface>
+<cc:implementation>
+	<style>
+		body .panel_blank .ui-panel-content {
+			border: 0px;
+			padding: 0px;
+		}
+		.container td {
+			padding: 0px;
+		}
+	</style>
+	<p:panelGrid columns="1" layout="grid" styleClass="ui-panelgrid-blank">
+		<p:panel styleClass="panel_blank">
+		<p:outputLabel value='Delivery Address' for='Delivery_Address'/>
+<p:inputText id='Delivery_Address' value='#{data.Delivery_Address}' required='false'/>
+
+		</p:panel>
+	</p:panelGrid>
+	<p:panelGrid columns="2" layout="grid" styleClass="ui-panelgrid-blank"
+		columnClasses="ui-g-12 ui-md-6 ui-lg-6, ui-g-12 ui-md-6 ui-lg-6, ui-g-12 ui-md-6 ui-lg-6, ui-g-12 ui-md-6 ui-lg-6">
+		<p:panel styleClass="panel_blank">
+		<p:outputLabel value='Lip Gloss' for='Lip_Gloss'/>
+<p:selectManyCheckbox id='Lip_Gloss' value='#{data.Lip_Gloss}' layout='grid' columns='1'>
+<f:selectItem itemLabel='color 1' itemValue='color 1' />
+<f:selectItem itemLabel='color 2' itemValue='color 2' />
+<f:selectItem itemLabel='color 3' itemValue='color 3' />
+</p:selectManyCheckbox>
+		</p:panel>
+		<p:panel styleClass="panel_blank">
+		<p:outputLabel value='After Shave Balm' for='After_Shave_Balm'/>
+<p:selectOneRadio id='After_Shave_Balm' value='#{data.After_Shave_Balm}' layout='grid' columns='1'>
+<f:selectItem itemLabel='50ml' itemValue='50ml' />
+<f:selectItem itemLabel='100ml' itemValue='100ml' />
+</p:selectOneRadio>
+		</p:panel>
+	</p:panelGrid>
+	<p:panelGrid columns="1" layout="grid" styleClass="ui-panelgrid-blank">
+		<p:panel styleClass="panel_blank">
+          <p:outputLabel value='Some remarks' for='Some_remarks'/>
+<p:inputTextarea id='Some_remarks'  value='#{data.Some_remarks}' required='false'/>
+<br/><br/><p:outputLabel value='Attach dokuments' for='Attach_dokuments'/>
+
+<p:dataTable id="Attach_dokuments" value="#{ivy.case.documents().getAll()}"
+	var="doc" emptyMessage="No files are found">
+	<p:column headerText="File name">
+		<h:outputText value="#{doc.name}" />
+	</p:column>
+	<p:column headerText="File size">
+		<h:outputText value="#{doc.size}" />
+	</p:column>
+	<p:column headerText="Download">
+		<a href="#{ivy.html.fileref(doc.path, false)}"><i
+			class="si si-download-bottom"></i></a>
+	</p:column>
+</p:dataTable>
+<br />
+<p:fileUpload value="#{data.Attach_dokuments}" mode="simple"
+	skinSimple="true" auto="true" process="@this" update="Attach_dokuments"
+	label="Add new file" listener="#{logic.handleFileUpload}"
+	styleClass="command-btns" rendered="#{cc.attrs.editable}" />		
+		</p:panel>
+	</p:panelGrid>
+
+</cc:implementation>
+</html>

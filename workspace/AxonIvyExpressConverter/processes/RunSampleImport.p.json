@@ -1,0 +1,51 @@
+{
+  "format" : "9.4.19",
+  "id" : "17FFF2B4A2CEA877",
+  "data" : "axon.ivy.express.impor.Data",
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "RequestStart",
+      "name" : "start.ivp",
+      "config" : {
+        "callSignature" : "start",
+        "outLink" : "start.ivp"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 64 },
+        "labelOffset" : { "x" : -21, "y" : 17 }
+      },
+      "connect" : { "id" : "f4", "to" : "f3" }
+    }, {
+      "id" : "f1",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 616, "y" : 64 }
+      }
+    }, {
+      "id" : "f3",
+      "type" : "Script",
+      "name" : "AXONIVY_Dataset_ExpressWorkflow_22.08.2022.json",
+      "config" : {
+        "security" : "system",
+        "output" : {
+          "code" : [
+            "import ch.ivyteam.ivy.ExpressWorkflowConverter;",
+            "import java.nio.file.Path;",
+            "import java.nio.file.Paths;",
+            "import java.nio.file.Files;",
+            "",
+            "",
+            "Path path = Paths",
+            "      .get(\"C:/XIVY/CodeCamp22-ExpressConverter/AXONIVY_Dataset_ExpressWorkflow_22.08.2022.json\");",
+            "String str = Files.readAllLines(path).get(0);",
+            "ExpressWorkflowConverter.importJson(str);"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 352, "y" : 64 },
+        "size" : { "width" : 384, "height" : 44 }
+      },
+      "connect" : { "id" : "f2", "to" : "f1" }
+    } ]
+}

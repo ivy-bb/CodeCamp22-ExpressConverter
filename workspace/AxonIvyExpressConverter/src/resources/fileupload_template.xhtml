@@ -1,0 +1,19 @@
+
+<p:dataTable id="${fieldname}" value="#{ivy.case.documents().getAll()}"
+	var="doc" emptyMessage="No files are found">
+	<p:column headerText="File name">
+		<h:outputText value="#{doc.name}" />
+	</p:column>
+	<p:column headerText="File size">
+		<h:outputText value="#{doc.size}" />
+	</p:column>
+	<p:column headerText="Download">
+		<a href="#{ivy.html.fileref(doc.path, false)}"><i
+			class="si si-download-bottom"></i></a>
+	</p:column>
+</p:dataTable>
+<br />
+<p:fileUpload value="#{data.${fieldname}}" mode="simple"
+	skinSimple="true" auto="true" process="@this" update="${fieldname}"
+	label="Add new file" listener="#{logic.handleFileUpload}"
+	styleClass="command-btns" rendered="#{cc.attrs.editable}" />
