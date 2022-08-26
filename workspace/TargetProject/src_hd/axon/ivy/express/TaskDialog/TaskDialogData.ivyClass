@@ -1,0 +1,8 @@
+TaskDialogData #class
+axon.ivy.express.TaskDialog #namespace
+processData axon.ivy.express.Order_GoodiesData #field
+processData PERSISTENT #fieldModifier
+currentStep java.lang.Integer #field
+currentStep PERSISTENT #fieldModifier
+parallelIndex java.lang.Integer #field
+parallelIndex PERSISTENT #fieldModifier
